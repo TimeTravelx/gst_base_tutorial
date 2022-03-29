@@ -1,4 +1,4 @@
-#include <gst/gst.h>
+#include <gst/gst.h> 
 
 
 //1. How to create elements with gst_element_factory_make()

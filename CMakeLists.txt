@@ -27,6 +27,9 @@ link_directories(${GIO_LIBRARY_DIRS}                )
 
 
 
+include_directories(/usr/include)
+link_directories(/usr/lib)
+
 
 
 add_executable(playbinuse ${CMAKE_SOURCE_DIR}/src/playbinuse.c)
@@ -48,6 +51,8 @@ target_link_libraries(BT04 gio-2.0 gobject-2.0 glib-2.0 gstreamer-1.0)
 # add_executable(BT05 ${CMAKE_SOURCE_DIR}/BT05GuiToolkit.c)
 # target_link_libraries(BT05 gio-2.0 gobject-2.0 glib-2.0 gstreamer-1.0)
 
+
+
 add_executable(BT06 ${CMAKE_SOURCE_DIR}/src/BT06Caps.c)
 target_link_libraries(BT06 gio-2.0 gobject-2.0 glib-2.0 gstreamer-1.0)
 
@@ -56,3 +61,10 @@ target_link_libraries(gst_record gstreamer-1.0 glib-2.0 gobject-2.0)
 
 add_executable(h264_encode ${CMAKE_SOURCE_DIR}/src/h264_encode.cpp)
 target_link_libraries(h264_encode gstreamer-1.0 glib-2.0 gobject-2.0)
+
+
+add_executable(rtsp_server ${CMAKE_SOURCE_DIR}/src/rtsp_server.cpp)
+target_link_libraries(rtsp_server
+    gstreamer-1.0 glib-2.0 gobject-2.0 gstapp-1.0 gstrtspserver-1.0 
+    avformat avdevice avcodec avutil pthread dl swresample z m)
+

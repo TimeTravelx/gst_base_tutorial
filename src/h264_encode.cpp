@@ -12,7 +12,7 @@
  *          ffplay -f f32le -ac 1 -ar 44100 a.raw
  * 
  * @pre use gstreamer pipeline to encode yuv raw data -> h264 data
- *      gst-launch-1.0 filesrc location=video.yuv ! rawvideoparse width=320 height=240 framerate=30/1 ! x264enc qp-min=18 ! filesink location=video.h264
+ *      gst-launch-1.0 filesrc location=video.yuv ! rawvideoparse width=320 height=240 framerate=30/1 ! x264enc ! filesink location=video.h264
  * 
  *      test play : ffplay video.h264
  *      
@@ -156,6 +156,7 @@ gboolean gst_bus_callback(GstBus* bus, GstMessage* message, gpointer user_data)
     case GST_MESSAGE_EOS: 
     {
        g_print("Element %s EOS.\n", GST_OBJECT_NAME (message->src));
+       exit(0);
        break;
     }
     case GST_MESSAGE_ERROR: 
